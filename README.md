@@ -14,8 +14,7 @@ METHOD | ENDPOINT                    | TOKEN | ROLE   | DESCRIPTION          | P
 GET    | /user/profile               | YES   | user   | Get Own Profile      |                                              | {user}
 GET    | /pet                        | YES   | user   | Get All Own Pets     |                                              | [pets]
 GET    | /pet/profile:id             | YES   | user   | Get Own Pet profile  |                                              | {pets}
-PUT    | /user/profile               | YES   | user   | Update Own Profile   |  `name`, `age`, `email`,                     | 'Profile updated'
-                                                                             |     `pets`, `direction`                      | 
+PUT    | /user/profile               | YES   | user   | Update Own Profile   |  `name`, `age`, `email`, `pets`, `direction`  | 'Profile updated'                                                                   
 PUT    | /pet/friends/:id            | YES   | user   | Add Friend           |                                              | 'Friend Added'
 PUT    | /pet/friends/:id/remove     | YES   | user   | Remove Friend        |                                              | 'Friend Removed'
 DELETE | /user/profile               | YES   | user   | Delete Own Profile   |                                              | 'Profile Removed'
