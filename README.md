@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/dearmascarlos/Proyect-2-PeTinder/main/Logo_api.png
+https://raw.githubusercontent.com/dearmascarlos/Proyect-2-PeTinder-/main/Logo_api.png
 
 # Proyect-2-PeTinder-
 
