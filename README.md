@@ -32,6 +32,6 @@ GET    | /user/:id                   | YES   | admin  | Get One User         |  
 GET    | /pet/                       | YES   | admin  | Get All Pets         |                                         | [pets]
 GET    | /pet/:id                    | YES   | admin  | Get One Pet          |                                         | {pet}
 PUT    | /user/:id                   | YES   | admin  | Update One User      | `user_name`, `email`, `password`        | 'Profile updated'
-PUT    | /pet/:id                    | YES   | admin  | Update One Pet       | `pet_nameName`, `gender`, ``            | 'Profile updated'
+PUT    | /pet/:id                    | YES   | admin  | Update One Pet       | `pet_name`, `gender`, ``            | 'Profile updated'
 DELETE | /user/:id                   | YES   | admin  | Delete One User      |                                         | 'User Removed'
 DELETE | /pet/:id                    | YES   | admin  | Delete One Pet       |                                         | 'Pet Removed'
