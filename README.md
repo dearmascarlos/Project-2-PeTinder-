@@ -1,4 +1,5 @@
-![](https://raw.githubusercontent.com/dearmascarlos/projectname/branch/path/to/img.png)
+![](https://github.com/dearmascarlos/Proyect-2-PeTinder-/blob/main/Logo_api.png?raw=true)
+
 
 # Proyect-2-PeTinder-
 
