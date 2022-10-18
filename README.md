@@ -19,8 +19,7 @@ PUT    | /pet/friends/:id            | YES   | user   | Add Friend           |  
 PUT    | /pet/friends/:id/remove     | YES   | user   | Remove Friend        |                                              | 'Friend Removed'
 DELETE | /user/profile               | YES   | user   | Delete Own Profile   |                                              | 'Profile Removed'
 DELETE | /pet/profile                | YES   | user   | Delete Own Profile   |                                              | 'Profile Removed'
-
-?? POST   | /pet/search                 | YES   | user   | Search One pet      | body: `breedName`                           | [pets], user_name}
+¿?POST   | /pet/search                 | YES   | user   | Search One pet       | body: `breedName`                            | [pets], user_name}
  
 
 ### Admin Endpoints
