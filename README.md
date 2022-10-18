@@ -13,16 +13,26 @@ POST   | /auth/login                 | -     | user | Login                 | `e
 METHOD | ENDPOINT                    | TOKEN | ROLE   | DESCRIPTION           | POST PARAMS                                  | RETURNS
 -------|-----------------------------|-------|--------|-----------------------|----------------------------------------------|--------------------
 GET    | /user/profile               | YES   | user   | Get Own Profile       |                                              | {user}
-GET    | /pet                        | YES   | user   | Get All Own Pets      |                                              | [pets]
-GET    | /pet/profile:id             | YES   | user   | Get Own Pet profile   |                                              | {pets}
-PUT    | /user/profile               | YES   | user   | Update Own Profile    |  `name`, `age`, `email`, `pets`, `direction` | 'Profile updated'   
-PUT    | /pet/profile                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`, `?¿breed?¿`       | 'Profile pet updated'
-PUT    | /pet/friends/:id            | YES   | user   | Add Friend            |                                              | 'Friend Added'
-PUT    | /pet/friends/:id/remove     | YES   | user   | Remove Friend          |                                              | 'Friend Removed'
+PUT    | /user/profile               | YES   | user   | Update Own Profile    |  `name`, `age`, `email`, `pets`, `direction` | 'Profile updated'
 DELETE | /user/profile               | YES   | user   | Delete Own Profile    |                                              | 'Profile Removed'
+GET    | /user/direction             | YES   | user   | See Own address       |                                             | {direction}
+POST   | /user/direction             | YES   | user   | Create  own address   |  `country`, `city`, `street`                  | 'Address created'
+PUT    | /user/direction             | YES   | user   | Update Own address    |  `country`, `city`, `street`                  |'Address updated'
+DELETE | /user/direction             | YES   | user   | Update Own address    |  `country`, `city`, `street`                  |'Address updated'|
+
+### Pet Endpoints
+
+METHOD | ENDPOINT                    | TOKEN | ROLE   | DESCRIPTION           | POST PARAMS                                  | RETURNS
+-------|-----------------------------|-------|--------|-----------------------|----------------------------------------------|--------------------
+GET    | /pet                        | YES   | user   | Get All Own Pets      |                                              | [pets]
+GET    | /pet/profile:id             | YES   | user   | Get Own Pet profile   |                                              | {pets} 
+GET    | /pet/search                 | YES   | user   | Search One pet by breed | body: `breedName`                            | [pets], user_name}
+PUT    | /pet/profile                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                   | 'Profile pet updated'
+PUT    | /pet/friends/:id            | YES   | user   | Add Friend            |                                             | 'Friend Added'
+PUT    | /pet/friends/:id/remove     | YES   | user   | Remove Friend         |                                              | 'Friend Removed'
 DELETE | /pet/profile                | YES   | user   | Delete Own Profile    |                                              | 'Profile Removed'
-¿?POST | /pet/search                 | YES   | user   | Search One pet by breed | body: `breedName`                            | [pets], user_name}
- 
+
+
 
 ### Admin Endpoints
 
