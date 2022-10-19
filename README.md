@@ -46,7 +46,7 @@ PUT    | /pet/:petId/friends/:friendId   | YES   | user   | Add Friend          
 PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `gender`                          | 'Profile updated'
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Date        |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
 -PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
-DELETE | /pet/profile/:id                | YES   | user   | Delete Own Profile     |                                               | 'Profile removed'
+DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
 DELETE | /pet/:id/friends/:friendId      | YES   | user   | Remove Own Friends     |                                               | 'Friend removed'
 DELETE | /pet/:id                        | YES   | admin  | Delete One Pet         |                                               | 'Pet removed'
 DELETE | /pet/date/:id                   | YES   | user   | Delete Own date        |                                               | 'Date removed'
