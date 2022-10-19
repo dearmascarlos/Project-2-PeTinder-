@@ -18,7 +18,7 @@ async function checkConnection() {
 
 async function syncModels() {
     try {
-        await sequelize.sync()
+        await sequelize.sync({force: true})
         console.log('All models synchronized successfully')
     } catch (error) {
         throw error
