@@ -55,11 +55,11 @@ DELETE | /pet/date/:id                   | YES   | user   | Delete Own Pet date 
 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
-POST   | /direction/:userId              | YES   | admin  | Create One address   |  `country`, `city`, `street`                  | 'Address created'
+POST   | /direction                      | YES   | admin  | Create One address   |  `country`, `city`, `street`                  | 'Address created'
 GET    | /direction                      | YES   | admin  | See All address      |                                               | [{direction}]
-GET    | /direction/:userId              | YES   | admin  | See One address      |                                               | {direction}
-PUT    | /direction/:userId              | YES   | admin  | Update One address   |  `country`, `city`, `street`                  | 'Address updated'
-DELETE | /direction/:userId              | YES   | admin  | Delete One address   |                                               | 'Address removed'
+GET    | /direction/:id                  | YES   | admin  | See One address      |                                               | {direction}
+PUT    | /direction/:id                  | YES   | admin  | Update One address   |  `country`, `city`, `street`                  | 'Address updated'
+DELETE | /direction/:id                  | YES   | admin  | Delete One address   |                                               | 'Address removed'
 
 ### Date Endpoints
 
@@ -77,7 +77,7 @@ DELETE  | /date/:id                      | YES   | admin  | Delete One date     
 
 METHOD  | ENDPOINT                       | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 --------|--------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
-POST    | /breed/:petId1                 | YES   | admin  | Create One Breed     |  `animal`, `breedName`, `size`                | 'Breed created'
+POST    | /breed                         | YES   | admin  | Create One Breed     |  `animal`, `breedName`, `size`                | 'Breed created'
 GET     | /breed/:id                     | YES   | admin  | See One Breed        |                                               | {breed}
 GET     | /breed                         | YES   | admin  | See All Breeds       |                                               | [{breed}]
 PUT     | /breed/:id                     | YES   | admin  | Update One Breed     |  `animal`, `breedName`, `size`                | 'Breed updated'
