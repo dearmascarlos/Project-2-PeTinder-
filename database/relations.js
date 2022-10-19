@@ -1,5 +1,5 @@
 // una vez tenga los modelos me los requiero
-
+const User = require('../api/models/user')
 
 
 
