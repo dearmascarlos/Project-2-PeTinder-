@@ -77,8 +77,8 @@ DELETE  | /date/:id                      | YES   | admin  | Delete One date     
 
 METHOD  | ENDPOINT                       | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 --------|--------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
--POST    | /breed/:petId1                 | YES   | admin  | Create One Breed     |  `animal`, `breedName`, `size`                | 'Breed created'
--GET     | /breed/:id                     | YES   | admin  | See One Breed        |                                               | {breed}
--GET     | /breed                         | YES   | admin  | See All Breeds       |                                               | [{breed}]
--PUT     | /breed/:id                     | YES   | admin  | Update One Breed     |  `animal`, `breedName`, `size`                | 'Breed updated'
--DELETE  | /breed/:id                     | YES   | admin  | Delete One breed     |                                               | 'Breed removed'
+POST    | /breed/:petId1                 | YES   | admin  | Create One Breed     |  `animal`, `breedName`, `size`                | 'Breed created'
+GET     | /breed/:id                     | YES   | admin  | See One Breed        |                                               | {breed}
+GET     | /breed                         | YES   | admin  | See All Breeds       |                                               | [{breed}]
+PUT     | /breed/:id                     | YES   | admin  | Update One Breed     |  `animal`, `breedName`, `size`                | 'Breed updated'
+DELETE  | /breed/:id                     | YES   | admin  | Delete One breed     |                                               | 'Breed removed'
