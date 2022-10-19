@@ -19,7 +19,7 @@ GET    | /user/pet                   | YES   | user   | See Own all pets      | 
 GET    | /user/pet/:id               | YES   | user   | See Own One pet       |                                              | {pet}
 GET    | /user/direction             | YES   | user   | See Own address       |                                              | {direction}
 GET    | /user/pet/date              | YES   | user   | See All Own Date      |                                              | [{date}]
--GET    | /user/breed                 | YES   | user   | See All Own Breeds    |                                              | [{breed}]
+GET    | /user/breed                 | YES   | user   | See All Own Breeds    |                                              | [{breed}]
 GET    | /user                       | YES   | admin  | Get All Users         |                                              | [users]
 GET    | /user/:id                   | YES   | admin  | Get One User          |                                              | {user}
 PUT    | /user/profile               | YES   | user   | Update Own Profile    | `name`, `age`, `email`, `pets`, `direction`  | 'Profile updated'
@@ -40,12 +40,12 @@ GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
 GET    | /pet/:id                        | YES   | admin  | Get One Pet            |                                               | {pet}
 GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates      |  query params                                 | [{date}] 
--GET    | /pet/:id/breed                  | YES   | user   |See Own Pet breed       |                                               | {breed} 
+GET    | /pet/:id/breed                  | YES   | user   |See Own Pet breed       |                                               | {breed} 
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
 PUT    | /pet/:petId/friends/:friendId   | YES   | user   | Add Friend             |                                               | 'Friend added'
 PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `gender`                          | 'Profile updated'
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
--PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
+PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
 DELETE | /pet/:id/friends/:friendId      | YES   | user   | Remove Own Friends     |                                               | 'Friend removed'
 DELETE | /pet/:id                        | YES   | admin  | Delete One Pet         |                                               | 'Pet removed'
