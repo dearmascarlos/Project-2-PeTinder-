@@ -1,5 +1,9 @@
 // una vez tenga los modelos me los requiero
 const User = require('../api/models/user')
+const Pet = require('../api/models/pet')
+const Address = require('../api/models/address')
+const Breed = require('../api/models/breed')
+const Date = require('../api/models/date')
 
 
 
