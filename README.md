@@ -34,7 +34,7 @@ DELETE | /user/:id                   | YES   | admin  | Delete One User       | 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|------------------------|-----------------------------------------------|--------------------
 POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`, `friend`  | 'Pet created'
-POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Date        |  `meetPoint`, `date`                          | 'Date created'
+POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`                          | 'Date created'
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
@@ -44,12 +44,12 @@ GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates   
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
 PUT    | /pet/:petId/friends/:friendId   | YES   | user   | Add Friend             |                                               | 'Friend added'
 PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `gender`                          | 'Profile updated'
-PUT    | /pet/date/:id                   | YES   | user   | Update Own Date        |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
+PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
 -PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
 DELETE | /pet/:id/friends/:friendId      | YES   | user   | Remove Own Friends     |                                               | 'Friend removed'
 DELETE | /pet/:id                        | YES   | admin  | Delete One Pet         |                                               | 'Pet removed'
-DELETE | /pet/date/:id                   | YES   | user   | Delete Own date        |                                               | 'Date removed'
+DELETE | /pet/date/:id                   | YES   | user   | Delete Own Pet date    |                                               | 'Date removed'
 
 ### Directions Endpoints
 
