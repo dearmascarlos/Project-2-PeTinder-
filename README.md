@@ -1,5 +1,5 @@
 
-# ![](https://github.com/dearmascarlos/Proyect-2-PeTinder-/blob/main/logo_api_xl.png)
+# ![](https://github.com/dearmascarlos/Proyect-2-PeTinder-/blob/main/assets/logo_api_xl.png)
 
 ### User Signup/Login
 
