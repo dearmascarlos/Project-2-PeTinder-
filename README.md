@@ -43,7 +43,7 @@ GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates   
 GET    | /pet/:id/breed                  | YES   | user   |See Own Pet breed       |                                               | {breed} 
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
 PUT    | /pet/:petId/friends/:id         | YES   | user   | Add Friend             |                                               | 'Friend added'
-PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `gender`                          | 'Pet profile updated', {pet}
+PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `age`, `gender`                   | 'Pet profile updated', {pet}
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
 PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
