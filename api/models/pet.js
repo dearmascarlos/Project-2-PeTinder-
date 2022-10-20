@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize')
+
 const { sequelize } = require('../../database')
 
 const Pet = sequelize.define(

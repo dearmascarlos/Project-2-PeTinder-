@@ -6,7 +6,7 @@
 METHOD | ENDPOINT                    | TOKEN | ROLE | DESCRIPTION           | POST PARAMS                                   | RETURNS
 -------|-----------------------------|-------|------|-----------------------|-----------------------------------------------|--------------------
 POST   | /auth/signup                | -     | user | User Signup           | `name`, `age`, `email`, `password`            | {msg: string, token: token }
-POST   | /auth/login                 | -     | user | Login                 | `email`, `password`                           | `token`
+POST   | /auth/login                 | -     | user | Login                 | `email`, `password`                           | {msg: string, token: token }
 
 ### User Endpoints
 
@@ -24,7 +24,7 @@ GET    | /user                       | YES   | admin  | Get All Users         | 
 GET    | /user/:id                   | YES   | admin  | Get One User          |                                              | {user}
 PUT    | /user/profile               | YES   | user   | Update Own Profile    | `name`, `age`, `email`, `pets`, `direction`  | 'Profile updated'
 PUT    | /user/address               | YES   | user   | Update Own address    | `country`, `city`, `street`                  |'Address updated'
-PUT    | /user/:id                   | YES   | admin  | Update One User       | `user_name`, `email`, `password`             | 'Profile updated'
+PUT    | /user/:id                   | YES   | admin  | Update One User       | `user_name`, `age`, `email`, `password`      | 'Profile updated'
 DELETE | /user/profile               | YES   | user   | Delete Own Profile    |                                              | 'Profile Removed'
 DELETE | /user/address               | YES   | user   | Delete Own address    |                                              |'Address removed'
 DELETE | /user/:id                   | YES   | admin  | Delete One User       |                                              | 'User Removed'

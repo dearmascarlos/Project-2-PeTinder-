@@ -34,7 +34,7 @@ async function login(req, res) {
             const payload = {email: user.email}
             const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '3h'})
 
-            return res.status(200).json({ token: token })
+            return res.status(200).json({msg:'Successful login', token: token })
         })
     } catch (error) {
         return res.status(500).send(error.message)
