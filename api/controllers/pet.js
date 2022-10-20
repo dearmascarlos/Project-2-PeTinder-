@@ -26,6 +26,21 @@ async function seeAllPets(req, res) {
     }
 }
 
+async function seeOnePet(req, res) {
+    try {
+        const pet = await Pet.findByPk(req.params.id, { 
+            include: [{model: Pet, as: 'Friend'}], 
+        })
+        if(pet) {
+        return res.status(200).json(pet)
+        } else {
+        return res.status(404).send('Pet not found')  
+        }
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 async function addFriend(req, res) {
     try {
         const pet = await Pet.findByPk(req.params.petId)
@@ -39,7 +54,24 @@ async function addFriend(req, res) {
     }
 }
 
+async function updateOnePet(req, res) {
+    try {
+        const [,pet] = await Pet.update(req.body, {
+            returning: true,
+            where: {
+                id: req.params.id
+            }
+        })
+        const data = pet[0].dataValues
+        if(pet) {
+            return res.status(200).json({msg: 'Pet profile updated', name: data.name, age: data.age, gender: data.gender, userId: data.userId})
+        } else {
+            return res.status(404).send('Pet not found')
+        }
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
 
-
-module.exports = { createPet, seeAllPets, addFriend }
+module.exports = { createPet, seeAllPets, addFriend, updateOnePet, seeOnePet }
