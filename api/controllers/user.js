@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const bcrypt = require('bcrypt')
 
 async function getAllUsers(req, res) {
     try {
@@ -23,13 +24,14 @@ async function getOneUser(req, res) {
 
 async function upDateOneUser(req, res) {
     try {
+        req.body.password = bcrypt.hashSync(req.body.password, 10)
         const user = await User.update(req.body, {
             where: {
                 id: req.params.id
             }
         })
         if (user) {
-			return res.status(200).json({ msg: 'Profile updated', user: user })
+			return res.status(200).json({ msg: 'Profile updated', user })
 		} else {
 			return res.status(404).send('User not found')
 		}
