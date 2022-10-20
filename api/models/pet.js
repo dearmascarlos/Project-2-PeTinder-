@@ -15,10 +15,6 @@ const Pet = sequelize.define(
       gender: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      friend: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
       }
     },
     { timestamps: false }
