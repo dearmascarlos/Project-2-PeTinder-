@@ -25,13 +25,16 @@ async function getOneUser(req, res) {
 async function upDateOneUser(req, res) {
     try {
         req.body.password = bcrypt.hashSync(req.body.password, 10)
-        const user = await User.update(req.body, {
+        const [,user] = await User.update(req.body, {
             where: {
                 id: req.params.id
-            }
+            },
+            returning: true
         })
+        //console.log(user)
+        const data = user[0].dataValues
         if (user) {
-			return res.status(200).json({ msg: 'Profile updated', user })
+			return res.status(200).json({ msg: 'Profile updated', name: data.name, age: data.age, email: data.email })
 		} else {
 			return res.status(404).send('User not found')
 		}
