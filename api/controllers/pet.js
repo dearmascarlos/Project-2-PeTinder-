@@ -73,5 +73,18 @@ async function updateOnePet(req, res) {
     }
 }
 
+async function deleteOnePet(req, res) {
+    try {
+        const pet = await Pet.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        return !pet ? res.status(404).send('Pet not found') : res.status(200).send('Pet removed')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
-module.exports = { createPet, seeAllPets, addFriend, updateOnePet, seeOnePet }
+
+module.exports = { createPet, seeAllPets, seeOnePet, addFriend, updateOnePet, deleteOnePet }
