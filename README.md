@@ -22,7 +22,7 @@ GET    | /user/pet/date              | YES   | user   | See All Own Date      | 
 GET    | /user/breed                 | YES   | user   | See All Own Breeds    |                                              | [{breed}]
 GET    | /user                       | YES   | admin  | Get All Users         |                                              | [users]
 GET    | /user/:id                   | YES   | admin  | Get One User          |                                              | {user}
-PUT    | /user/profile               | YES   | user   | Update Own Profile    | `name`, `age`, `email`, `pets`, `direction`  | 'Profile updated'
+PUT    | /user/profile               | YES   | user   | Update Own Profile    | `name`, `age`, `email`, `pets??`, `direction??`| 'Profile updated'
 PUT    | /user/address               | YES   | user   | Update Own address    | `country`, `city`, `street`                  |'Address updated'
 PUT    | /user/:id                   | YES   | admin  | Update One User       | `user_name`, `age`, `email`, `password`      | 'Profile updated'
 DELETE | /user/profile               | YES   | user   | Delete Own Profile    |                                              | 'Profile Removed'
@@ -33,17 +33,17 @@ DELETE | /user/:id                   | YES   | admin  | Delete One User       | 
 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|------------------------|-----------------------------------------------|--------------------
-POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`, `friend`  | 'Pet created'
+POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`            | 'Pet created'
 POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`                          | 'Date created'
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
-GET    | /pet/:id                        | YES   | admin  | Get One Pet            |                                               | {pet}
+GET    | /pet/:id                        | YES   | admin  | See One Pet            |                                               | {pet}
 GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates      |  query params                                 | [{date}] 
-GET    | /pet/:id/breed                  | YES   | user   |See Own Pet breed       |                                               | {breed} 
+GET    | /pet/:id/breed                  | YES   | user   | See Own Pet breed      |                                               | {breed} 
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
-PUT    | /pet/:petId/friends/:id         | YES   | user   | Add Friend             |                                               | 'Friend added'
-PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `pet_name`, `age`, `gender`                   | 'Pet profile updated', {pet}
+PUT    | /pet/:petId/friend/:id          | YES   | user   | Add Friend             |                                               | 'Friend added'
+PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `name`, `age`, `gender`                       | 'Pet profile updated', {pet}
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
 PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
@@ -56,10 +56,10 @@ DELETE | /pet/date/:id                   | YES   | user   | Delete Own Pet date 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
 POST   | /address                        | YES   | admin  | Create One address   |  `country`, `city`, `street`                  | 'Address created'
-GET    | /address                        | YES   | admin  | See All address      |                                               | [{direction}]
-GET    | /address/:id                  | YES   | admin  | See One address      |                                               | {direction}
-PUT    | /address/:id                  | YES   | admin  | Update One address   |  `country`, `city`, `street`                  | 'Address updated'
-DELETE | /address/:id                  | YES   | admin  | Delete One address   |                                               | 'Address removed'
+GET    | /address                        | YES   | admin  | See All addresses    |                                               | [{direction}]
+GET    | /address/:id                    | YES   | admin  | See One address      |                                               | {direction}
+PUT    | /address/:id                    | YES   | admin  | Update One address   |  `country`, `city`, `street`                  | 'Address updated'
+DELETE | /address/:id                    | YES   | admin  | Delete One address   |                                               | 'Address removed'
 
 ### Date Endpoints
 
