@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const Pet = require('../models/pet')
+const Address = require('../models/address')
 
 async function getAllUsers(req, res) {
     try {
@@ -78,7 +79,7 @@ async function deleteOneUser(req, res) {
 async function getOwnProfile(req, res) {
     try {
         const user = await User.findByPk(res.locals.user.id, {
-            include: [{model: Pet}], 
+            include: [{model: Pet}, {model: Address}],
             attributes: {
                 exclude: ['password', 'role']
             },
@@ -130,6 +131,53 @@ async function createOwnPet(req, res) {
     }
 }
 
+async function createOwnAddress(req, res) { 
+    try {
+        const user = await User.findByPk(res.locals.user.id)
+        const address = await user.createAddress(req.body, {
+            where: {
+                userId: res.locals.user.id
+            }
+        })
+        return res.status(200).json({msg: 'Address Created!', address})
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+async function updateOwnAddress(req, res) { //no actualiza la Address
+    try {
+        const owner = await User.findByPk(res.locals.user.id)
+
+        await Address.update(req.body, {
+            returning: true,
+            where: {
+                userId: owner.id
+            }
+        })
+            
+            return res.status(200).json({msg: 'Address updated'})
+        
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+async function deleteOwnAddress(req, res) {
+    try {
+        const owner = await User.findByPk(res.locals.user.id)
+
+        await Address.destroy({
+                where: {
+                    userId: owner.id
+                }
+        })
+        res.status(200).send('Address Removed')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 
 module.exports = { 
     getAllUsers, 
@@ -139,7 +187,10 @@ module.exports = {
     getOwnProfile, 
     updateOwnProfile, 
     deleteOwnProfile,
-    createOwnPet 
+    createOwnPet,
+    createOwnAddress,
+    updateOwnAddress,
+    deleteOwnAddress
 }
 
 
