@@ -7,7 +7,7 @@ const Date = require('../api/models/date')
 
 
 
-function addRelationsModels() {
+function addRelationsModels() { 
     try {
         User.hasMany(Pet)
         Pet.belongsTo(User)
@@ -23,8 +23,8 @@ function addRelationsModels() {
         Pet.belongsToMany(Date, {through: 'Pet_Dates'})
         Date.belongsToMany(Pet, {through: 'Pet_Dates'})
 
-        Breed.hasMany(Pet)
-        Pet.belongsTo(Breed)
+        // Breed.hasMany(Pet)
+        // Pet.belongsTo(Breed)
 
         console.log('Relations added to models')
     } catch (error) {

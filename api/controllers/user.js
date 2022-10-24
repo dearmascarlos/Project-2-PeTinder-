@@ -31,7 +31,7 @@ async function upDateOneUser(req, res) {
             },
             returning: true
         })
-        //console.log(user)
+
         const data = user[0].dataValues
         if (user) {
 			return res.status(200).json({ msg: 'Profile updated', name: data.name, age: data.age, email: data.email })
@@ -92,20 +92,6 @@ async function deleteOwnProfile(req, res) {
         return res.status(500).send(error.message)
     }
 }
-
-async function deleteOneUser(req, res) {
-    try {
-        const user = await User.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        return !user ? res.status(404).send('User not found') : res.status(200).send('User removed')
-    } catch (error) {
-        return res.status(500).send(error.message)
-    }
-}
-
 
 module.exports = { getAllUsers, getOneUser, upDateOneUser, deleteOneUser, getOwnProfile, updateOwnProfile, deleteOwnProfile }
 
