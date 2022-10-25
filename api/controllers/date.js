@@ -86,8 +86,24 @@ async function deleteOneDate(req, res) {
 
 async function aceptedDate(req, res) {
     try {
-  
-       
+        const owner = await User.findByPk(res.locals.user.id)
+        let date = await Date.findByPk(req.params.id)
+        const datePet = await date.getPets()
+        let authorized = false
+        datePet.forEach(pet => {
+            if(pet.userId === owner.id) {
+                authorized = true
+            }
+        })
+        if(authorized) {
+            date = await Date.update({cancelled: 'acepted'}, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            return res.status(200).send('Date accepted')
+        }
+        return res.status(401).send(`You don't have pet`)
     } catch (error) {
         return res.status(500).send(error.message)
     }

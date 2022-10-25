@@ -1,6 +1,7 @@
 const Pet = require('../models/pet')
 const User = require('../models/user')
 const Date = require('../models/date')
+const { Op } = require('sequelize')
 
 async function createPet(req, res) {
     try {
@@ -46,7 +47,7 @@ async function seeOnePet(req, res) {
 async function addOwnFriend(req, res) {
     try {
         const owner = await User.findByPk(res.locals.user.id)
-        if(res.locals.user.email === 'admin@gmail.com'){ // EL ADMIN SIEMPRE DEBERA TENER ESTE EMAIL
+        if(res.locals.user.role === 'admin'){
             try {
                 const pet = await Pet.findByPk(req.params.id)
                 const friend = await Pet.findByPk(req.params.friendId)
@@ -77,8 +78,28 @@ async function addOwnFriend(req, res) {
     } catch (error) {
         return res.status(500).send(error.message)
     }
-
 }
+
+async function seeAllOwnFriends(req, res) {
+    try {
+        const pets = await Pet.findAll({
+            where: {
+                userId: res.locals.user.id
+            }, 
+            include: [{model: Pet, as: 'Friend'}]
+        })
+
+        if(pets <= 0) {
+            return res.status(404).send(`Not pets`)
+        } else {
+           
+            return res.status(200).json(pets)
+        }
+    } catch (error) {
+        return res.status(500).send(error.menssage)
+    }
+}
+
 
 async function updateOnePet(req, res) {
     try {
@@ -223,17 +244,36 @@ async function createOwnPetDate(req, res) {
 
 async function seeOwnPetDates (req, res) {
     try {
-        const owner = await User.findByPk(res.locals.user.id)
-        const pet = await owner.getPets({
-            include: [{model: Date}],
-            where: {
-                id: req.params.id
+        if (Object.keys(req.query)[0] === 'date') {
+            const date = Object.values(req.query)[0]
+            const pet = await Pet.findByPk(req.params.id, {
+                include: [{model: Date}]
+            })
+            const result = pet.dates.filter(data => {
+                const day = data.dataValues.date
+                const query = date.split('-')
+                const array = [day.getFullYear(), day.getMonth(), day.getDate()]
+                return array[0] > query[0] || (array[0] == query[0] && array[1] > query[1]) || (array[0] == query[0] && array[1] == query[1] && array[2] >= query[2])
+            })
+            
+            if(result.length === 0) {
+                res.status(404).send('Date not found')
+            } else {
+                res.status(200).json(result)
             }
-        })
-        if(pet <= 0) {
-            res.status(404).send('Not found in your pets')
         } else {
-            res.status(200).json(pet)
+            const owner = await User.findByPk(res.locals.user.id)
+            const pet = await owner.getPets({
+                include: [{model: Date}],
+                where: {
+                    id: req.params.id
+                }
+            })
+            if(pet <= 0) {
+                res.status(404).send('Not found in your pets')
+            } else {
+                res.status(200).json(pet)
+            }
         }
     } catch (error) {
         return res.status(500).send(error.message)
@@ -252,5 +292,6 @@ module.exports = {
     deleteOwnPetProfile,
     updateOwnPetProfile,
     createOwnPetDate,
-    seeOwnPetDates
+    seeOwnPetDates,
+    seeAllOwnFriends
 }
