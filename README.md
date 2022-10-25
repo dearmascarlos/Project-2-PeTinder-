@@ -15,8 +15,6 @@ METHOD | ENDPOINT                    | TOKEN | ROLE   | DESCRIPTION           | 
 POST   | /user/address               | YES   | user   | Create  own address   | `country`, `city`, `street`                  | 'Address created'
 POST   | /user/pet/                  | YES   | user   | Create own Pet        | `name`, `age`, `gender`, `friend`            | 'Pet created', {pet}
 GET    | /user/profile               | YES   | user   | Get Own Profile       |                                              | {user}
-GET    | /user/pet                   | YES   | user   | See Own all pets      |                                              | [{pet}]
-GET    | /user/pet/:id               | YES   | user   | See Own One pet       |                                              | {pet}
 GET    | /user/address               | YES   | user   | See Own address       |                                              | {direction}
 GET    | /user/pet/date              | YES   | user   | See All Own Date      |                                              | [{date}]
 GET    | /user/breed                 | YES   | user   | See All Own Breeds    |                                              | [{breed}]
@@ -38,7 +36,7 @@ POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date 
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
-GET    | /pet/:id                        | YES   | admin  | See One Pet            |                                               | {pet}
+GET    | /pet/:id                        | YES   | user   | See One Pet            |                                               | {pet}
 GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates      |  query params                                 | [{date}] 
 GET    | /pet/:id/breed                  | YES   | user   | See Own Pet breed      |                                               | {breed} 
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
