@@ -5,8 +5,8 @@ const Address = require('../models/address')
 
 async function getAllUsers(req, res) {
     try {
-        const users = await User.findAll()
-
+        const users = await User.findAll({
+            include: [{model: Address}]})
         if(!users) return res.status(404).send('Users not found')
 
         return res.status(200).json(users)
@@ -18,7 +18,7 @@ async function getAllUsers(req, res) {
 async function getOneUser(req, res) {
     try {
         const user = await User.findByPk(req.params.id, {
-            include: [{model: Pet}]
+            include: [{model: Pet}, {model: Address}]
         })
         
         return !user ? res.status(404).send('User not found') : res.status(200).json(user)
@@ -36,7 +36,6 @@ async function upDateOneUser(req, res) {
             },
             returning: true
         })
-        //console.log(user)
         const data = user[0].dataValues
         if (user) {
 			return res.status(200).json({ msg: 'Profile updated', name: data.name, age: data.age, email: data.email })

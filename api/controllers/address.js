@@ -5,7 +5,7 @@ async function createOneAddress(req, res) {
         const address = await Address.create(req.body, {
             fields: ['country', 'city', 'street', 'userId']
         })
-        return res.status(200).send('Address created')
+        return res.status(200).json({msg: 'Address created', address})
     } catch (error) {
         return res.status(500).send(error.message)
     }

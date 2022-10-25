@@ -1,5 +1,6 @@
 const Pet = require('../models/pet')
 const User = require('../models/user')
+const Date = require('../models/date')
 
 async function createPet(req, res) {
     try {
@@ -42,17 +43,41 @@ async function seeOnePet(req, res) {
     }
 }
 
-async function addFriend(req, res) { // Esto asi seria una funcion de admin, para que sea para un user tenemos que permitirlo solo si es dueño de al menos uno
+async function addOwnFriend(req, res) {
     try {
-        const pet = await Pet.findByPk(req.params.petId)
-        const friend = await Pet.findByPk(req.params.friendId)
+        const owner = await User.findByPk(res.locals.user.id)
+        if(res.locals.user.email === 'admin@gmail.com'){ // EL ADMIN SIEMPRE DEBERA TENER ESTE EMAIL
+            try {
+                const pet = await Pet.findByPk(req.params.id)
+                const friend = await Pet.findByPk(req.params.friendId)
+        
+                await pet.addFriend(friend)
+                await friend.addFriend(pet)
+                return res.status(200).send('Friend Added')
+            } catch (error) {
+                return res.status(500).send(error.message)
+            }
+        } else {
+            const myPet = await owner.getPets({
+                where: {
+                    id: req.params.id
+                }
+            })
+            if(myPet <= 0) {
+                res.status(404).send('Not found in your pets')
+            } else {
+                const pet = await Pet.findByPk(req.params.id)
+                const friend = await Pet.findByPk(req.params.friendId)
 
-        await pet.addFriend(friend)
-        await friend.addFriend(pet)
-        return res.status(200).send('Friend Added')
+                await pet.addFriend(friend)
+                await friend.addFriend(pet)
+                return res.status(200).send('Friend Added')
+            }
+        }
     } catch (error) {
         return res.status(500).send(error.message)
     }
+
 }
 
 async function updateOnePet(req, res) {
@@ -65,7 +90,7 @@ async function updateOnePet(req, res) {
         })
         const data = pet[0].dataValues
         if(pet) {
-            return res.status(200).json({msg: 'Pet profile updated', name: data.name, age: data.age, gender: data.gender, userId: data.userId})
+            return res.status(200).json({msg: 'Pet profile updated', name: data.name, age: data.age, gender: data.gender, breedId: data.breedId, userId: data.userId})
         } else {
             return res.status(404).send('Pet not found')
         }
@@ -168,17 +193,64 @@ async function deleteOwnPetProfile (req, res) {
     }
 }
 
+async function createOwnPetDate(req, res) {
+    try {
+        const owner = await User.findByPk(res.locals.user.id)
+        const pet = await owner.getPets({
+            where: {
+                id: req.params.petId
+            }
+        })
+        if(pet <= 0) {
+            res.status(404).send('Not found in your pets')
+        } else {
+            const date = await Date.create( req.body, {
+                fields: ['meetPoint', 'date']
+            })
+            const pet1 = await Pet.findByPk(req.params.petId)
+            const pet2 = await Pet.findByPk(req.body.petId2)
 
+            await date.addPet(pet1)
+            await date.addPet(pet2)
+
+            return res.status(200).send('Date created!')
+        }
+
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+async function seeOwnPetDates (req, res) {
+    try {
+        const owner = await User.findByPk(res.locals.user.id)
+        const pet = await owner.getPets({
+            include: [{model: Date}],
+            where: {
+                id: req.params.id
+            }
+        })
+        if(pet <= 0) {
+            res.status(404).send('Not found in your pets')
+        } else {
+            res.status(200).json(pet)
+        }
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
 module.exports = { 
     createPet, 
     seeAllPets, 
     seeOnePet, 
-    addFriend, 
+    addOwnFriend, 
     updateOnePet, 
     deleteOnePet,
     getOwnPetsProfile,
     getOwnPet,
     deleteOwnPetProfile,
-    updateOwnPetProfile
+    updateOwnPetProfile,
+    createOwnPetDate,
+    seeOwnPetDates
 }

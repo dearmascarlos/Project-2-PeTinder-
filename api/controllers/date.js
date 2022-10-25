@@ -1,5 +1,6 @@
 const Date = require('../models/date')
 const Pet = require('../models/pet')
+const User = require('../models/user')
 
 async function createDate(req, res) {
     try {
@@ -53,7 +54,6 @@ async function seeOneDate(req, res) {
 
 async function updateOneDate(req, res) {
     try {
-        console.log(req.params)
         const [,date] = await Date.update( req.body, {
             returning: true,
             where: {
@@ -84,4 +84,14 @@ async function deleteOneDate(req, res) {
     }
 }
 
-module.exports = { createDate, seeAllDates, seeOneDate, deleteOneDate, updateOneDate }
+async function aceptedDate(req, res) {
+    try {
+  
+       
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+
+module.exports = { createDate, seeAllDates, seeOneDate, deleteOneDate, updateOneDate, aceptedDate }

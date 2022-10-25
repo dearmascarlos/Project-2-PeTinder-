@@ -12,7 +12,7 @@ const Date = sequelize.define(
         type: DataTypes.DATE,
         allowNull: false
       },
-      status: {
+      cancelled: {
         type: DataTypes.ENUM('cancelled', 'acepted'),
         allowNull: false,
         defaultValue: 'cancelled' 
