@@ -34,12 +34,10 @@ DELETE | /user/:id                   | YES   | admin  | Delete One User       | 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|------------------------|-----------------------------------------------|--------------------
 POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`, `friend`  | 'Pet created'
-POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`                          | 'Date created'
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
 GET    | /pet/:id                        | YES   | admin  | Get One Pet            |                                               | {pet}
-GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates      |  query params                                 | [{date}] 
 GET    | /pet/:id/breed                  | YES   | user   |See Own Pet breed       |                                               | {breed} 
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
 PUT    | /pet/:petId/friends/:friendId   | YES   | user   | Add Friend             |                                               | 'Friend added'
@@ -66,8 +64,10 @@ DELETE | /direction/:userId              | YES   | admin  | Delete One address  
 METHOD  | ENDPOINT                       | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 --------|--------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
 POST    | /date/:petId1/:petId2          | YES   | admin  | Create One Date      |  `meetPoint`, `date`                          | 'Date created'
+POST    | /date/:petId1                  | YES   | user   | Create Own Pet Date  |  `meetPoint`, `date`, `petId2`                | 'Date created'
 GET     | /date/:id                      | YES   | admin  | See One date         |                                               | {date}
 GET     | /date                          | YES   | admin  | See All dates        |                                               | [{date}]
+GET     | /date/petId/date               | YES   | user   | See Own Pet Dates    |  query params                                 | [{date}] 
 PUT     | /date/:id                      | YES   | admin  | Update One Date      |  `meetPoint`, `date`                          | 'Date updated'
 PUT     | /date/:id/cancelled            | YES   | user   | Cancell date         |                                               | 'Date cancelled' 
 PUT     | /date/:id/acepted              | YES   | user   | Acepted date         |                                               | 'Date acepted' 
