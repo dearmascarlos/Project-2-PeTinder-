@@ -74,4 +74,10 @@ async function deleteOneBreed(req, res) {
     }
 }
 
-module.exports = { createOneBreed, seeAllBreeds, seeOneBreed, updateOneBreed, deleteOneBreed }
+module.exports = {
+    createOneBreed, 
+    seeAllBreeds, 
+    seeOneBreed, 
+    updateOneBreed, 
+    deleteOneBreed 
+}

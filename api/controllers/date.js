@@ -109,5 +109,38 @@ async function aceptedDate(req, res) {
     }
 }
 
+async function cancelledDate(req, res) {
+    try {
+        const owner = await User.findByPk(res.locals.user.id)
+        let date = await Date.findByPk(req.params.id)
+        const datePet = await date.getPets()
+        let authorized = false
+        datePet.forEach(pet => {
+            if(pet.userId === owner.id) {
+                authorized = true
+            }
+        })
+        if(authorized) {
+            date = await Date.update({cancelled: 'cancelled'}, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            return res.status(200).send('Date cancelled')
+        }
+        return res.status(401).send(`You don't have pet`)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
-module.exports = { createDate, seeAllDates, seeOneDate, deleteOneDate, updateOneDate, aceptedDate }
+
+module.exports = {
+    createDate, 
+    seeAllDates, 
+    seeOneDate, 
+    deleteOneDate,
+    updateOneDate, 
+    aceptedDate, 
+    cancelledDate 
+}

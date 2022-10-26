@@ -1,4 +1,4 @@
-const router = require('express').Router()  // Lo dejo listo para luego pasar las rutas
+const router = require('express').Router() 
 
 
 const authRouter = require('./auth')

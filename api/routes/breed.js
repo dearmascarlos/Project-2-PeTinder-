@@ -1,6 +1,13 @@
 const router = require('express').Router()
 
-const { createOneBreed, seeAllBreeds, seeOneBreed, updateOneBreed, deleteOneBreed } = require('../controllers/breed')
+const {
+    createOneBreed, 
+    seeAllBreeds, 
+    seeOneBreed, 
+    updateOneBreed, 
+    deleteOneBreed 
+} = require('../controllers/breed')
+
 const { checkAdmin, checkAuth } = require('../utils')
 
 router.post('/', checkAuth, checkAdmin, createOneBreed)

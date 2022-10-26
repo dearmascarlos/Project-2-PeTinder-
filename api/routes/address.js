@@ -1,7 +1,13 @@
 const router = require('express').Router()
 
+const { 
+    createOneAddress, 
+    seeAllAddresses, 
+    seeOneAddress, 
+    updateOneAddress, 
+    deleteOneAddress 
+} = require('../controllers/address')
 
-const { createOneAddress, seeAllAddresses, seeOneAddress, updateOneAddress, deleteOneAddress } = require('../controllers/address')
 const { checkAdmin, checkAuth } = require('../utils')
 
 

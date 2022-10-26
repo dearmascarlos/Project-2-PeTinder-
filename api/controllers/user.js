@@ -177,7 +177,6 @@ async function deleteOwnAddress(req, res) {
     }
 }
 
-
 module.exports = { 
     getAllUsers, 
     getOneUser, 

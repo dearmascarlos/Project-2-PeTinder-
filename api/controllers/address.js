@@ -72,4 +72,10 @@ async function deleteOneAddress(req, res) {
 }
   
 
-module.exports = {createOneAddress, seeAllAddresses, seeOneAddress, updateOneAddress, deleteOneAddress}
+module.exports = {
+    createOneAddress, 
+    seeAllAddresses, 
+    seeOneAddress, 
+    updateOneAddress, 
+    deleteOneAddress
+}
