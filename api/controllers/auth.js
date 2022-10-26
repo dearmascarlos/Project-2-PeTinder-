@@ -41,7 +41,23 @@ async function login(req, res) {
     }
 }
 
+async function logOut(req, res) {
+    try {
+        const user = await User.findByPk(res.locals.user.id)
+        if (!user) return res.status(401).send('First, you should be log')
+
+            const payload = { email: res.locals.user.email}
+            const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '0s'})
+        
+            return res.status(200).json({msg: 'Successful log out', token})
+        
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = { 
     signUp,
-    login
+    login,
+    logOut
 }
