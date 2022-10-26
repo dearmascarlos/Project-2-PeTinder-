@@ -32,7 +32,7 @@ DELETE | /user/:id                   | YES   | admin  | Delete One User       | 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|------------------------|-----------------------------------------------|--------------------
 POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`            | 'Pet created'
-POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`                          | 'Date created'
+POST   | /pet/:petId1/date               | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`, `petId2`                | 'Date created'
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
