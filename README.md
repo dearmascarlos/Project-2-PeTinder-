@@ -39,12 +39,10 @@ GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
 GET    | /pet/:id                        | YES   | user   | See One Pet            |                                               | {pet}
 GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates      |  query params                                 | [{date}] 
-GET    | /pet/:id/breed                  | YES   | user   | See Own Pet breed      |                                               | {breed} 
-PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`                      | 'Profile updated'
+PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`, `breedId`           | 'Profile updated'
 PUT    | /pet/:petId/friend/:id          | YES   | user   | Add Friend             |                                               | 'Friend added'
 PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `name`, `age`, `gender`                       | 'Pet profile updated', {pet}
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
-PUT    | /pet/:id/breed                  | YES   | user   | Update Own breed       |  `animal`, `breedName`, `size`                | 'Breed updated'
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
 DELETE | /pet/:id/friends/:id            | YES   | user   | Remove Own Friends     |                                               | 'Friend removed'
 DELETE | /pet/:id                        | YES   | admin  | Delete One Pet         |                                               | 'Pet removed'
