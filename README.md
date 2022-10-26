@@ -7,6 +7,7 @@ METHOD | ENDPOINT                    | TOKEN | ROLE | DESCRIPTION           | PO
 -------|-----------------------------|-------|------|-----------------------|-----------------------------------------------|--------------------
 POST   | /auth/signup                | -     | user | User Signup           | `name`, `age`, `email`, `password`            | {msg: string, token: token }
 POST   | /auth/login                 | -     | user | Login                 | `email`, `password`                           | {msg: string, token: token }
+GET    | /auth/logout                | -     | user | Logout                |                                               | {msg: string, token }
 
 ### User Endpoints
 
@@ -32,7 +33,7 @@ DELETE | /user/:id                   | YES   | admin  | Delete One User       | 
 METHOD | ENDPOINT                        | TOKEN | ROLE   | DESCRIPTION            | POST PARAMS                                   | RETURNS
 -------|---------------------------------|-------|--------|------------------------|-----------------------------------------------|--------------------
 POST   | /pet                            | YES   | admin  | Create Pet             |  `userId`, `name`, `age`, `gender`            | 'Pet created'
-POST   | /pet/:petId1/date/:petId2       | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`                          | 'Date created'
+POST   | /pet/:petId1/date               | YES   | user   | Create Own Pet Date    |  `meetPoint`, `date`, `petId2`                | 'Date created'
 GET    | /pet                            | YES   | user   | See All Pets           |                                               | [{pet}]
 GET    | /pet/profile:id                 | YES   | user   | Get Own Pet profile    |                                               | {pets} 
 GET    | /pet/friends                    | YES   | user   | See All Own Friends    |                                               | [friend]
@@ -63,12 +64,12 @@ DELETE | /address/:id                    | YES   | admin  | Delete One address  
 
 METHOD  | ENDPOINT                       | TOKEN | ROLE   | DESCRIPTION          | POST PARAMS                                   | RETURNS
 --------|--------------------------------|-------|--------|----------------------|-----------------------------------------------|--------------------
-POST    | /date/:petId1/:petId2          | YES   | admin  | Create One Date      |  `meetPoint`, `date`                          | 'Date created'
+POST    | /date                          | YES   | admin  | Create One Date      |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date created'
 GET     | /date/:id                      | YES   | admin  | See One date         |                                               | {date}
 GET     | /date                          | YES   | admin  | See All dates        |                                               | [{date}]
 PUT     | /date/:id                      | YES   | admin  | Update One Date      |  `meetPoint`, `date`                          | 'Date updated'
 PUT     | /date/:id/cancelled            | YES   | user   | Cancell date         |                                               | 'Date cancelled' 
-PUT     | /date/:id/acepted              | YES   | user   | Acepted date         |                                               | 'Date acepted' 
+PUT     | /date/:id/acepted              | YES   | user   | Accepted date        |                                               | 'Date accepted' 
 DELETE  | /date/:id                      | YES   | admin  | Delete One date      |                                               | 'Date removed'
 
 ### Breed Endpoints
