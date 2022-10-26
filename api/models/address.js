@@ -1,23 +1,23 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Breed = sequelize.define(
-    'breed',
+const Address = sequelize.define(
+    'address',
     {
-      animal: {
-        type: DataTypes.ENUM('cat', 'dog'),
-        allowNull: false
-      },
-      breedName: {
+      country: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      size: {
-        type: DataTypes.ENUM('small', 'medium', 'large'),
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      street: {
+        type: DataTypes.STRING,
         allowNull: false
       }
     },
     { timestamps: false }
   )
-
-  module.exports = Breed
+  
+  module.exports = Address
