@@ -42,6 +42,7 @@ GET    | /pet/:id/date                   | YES   | user   | See Own Pet Dates   
 PUT    | /pet/profile/:id                | YES   | user   | Update Own pet Profile |  `name`, `age`, `gender`, `breedId`           | 'Profile updated'
 PUT    | /pet/:petId/friend/:id          | YES   | user   | Add Friend             |                                               | 'Friend added'
 PUT    | /pet/:id                        | YES   | admin  | Update One Pet         | `name`, `age`, `gender`                       | 'Pet profile updated', {pet}
+
 PUT    | /pet/date/:id                   | YES   | user   | Update Own Pet Date    |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date updated
 DELETE | /pet/profile/:id                | YES   | user   | Delete Own Pet Profile |                                               | 'Profile removed'
 DELETE | /pet/:id/friends/:id            | YES   | user   | Remove Own Friends     |                                               | 'Friend removed'
@@ -65,6 +66,7 @@ METHOD  | ENDPOINT                       | TOKEN | ROLE   | DESCRIPTION         
 POST    | /date                          | YES   | admin  | Create One Date      |  `meetPoint`, `date`, `petId1`, `petId2`      | 'Date created'
 GET     | /date/:id                      | YES   | admin  | See One date         |                                               | {date}
 GET     | /date                          | YES   | admin  | See All dates        |                                               | [{date}]
+GET     | /date/petId/date               | YES   | user   | See Own Pet Dates    |  query params                                 | [{date}] 
 PUT     | /date/:id                      | YES   | admin  | Update One Date      |  `meetPoint`, `date`                          | 'Date updated'
 PUT     | /date/:id/cancelled            | YES   | user   | Cancell date         |                                               | 'Date cancelled' 
 PUT     | /date/:id/acepted              | YES   | user   | Accepted date        |                                               | 'Date accepted' 
